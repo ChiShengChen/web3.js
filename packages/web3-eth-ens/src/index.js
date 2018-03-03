@@ -18,4 +18,6 @@
  * @date 2018
  */
 
+"use strict";
+
 module.exports = require('./ENS');
