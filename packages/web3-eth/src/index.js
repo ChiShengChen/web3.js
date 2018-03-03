@@ -35,6 +35,7 @@ var BaseContract = require('web3-eth-contract');
 var Iban = require('web3-eth-iban');
 var Accounts = require('web3-eth-accounts');
 var abi = require('web3-eth-abi');
+var ENS = require('web3-eth-ens');
 
 var getNetworkType = require('./getNetworkType.js');
 var formatter = helpers.formatters;
@@ -167,6 +168,9 @@ var Eth = function Eth() {
 
     // add ABI
     this.abi = abi;
+
+    // add ENS
+    this.ens = new ENS(this);
 
 
     var methods = [
