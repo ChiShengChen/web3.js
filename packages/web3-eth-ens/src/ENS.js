@@ -20,7 +20,7 @@ Object.defineProperty(ENS.prototype, 'registry', {
 });
 
 /**
- * Gets the address record associated with a name.
+ * Returns the address record associated with a name.
  *
  * @method getAddress
  * @param {string} name
@@ -34,6 +34,79 @@ ENS.prototype.getAddress = function (name) {
     });
 };
 
+/**
+ * Sets a new address
+ *
+ * @param {string} name
+ * @param {string} address
+ * @returns {Promise<Transaction>}
+ */
+ENS.prototype.setAddress = function (name, address) {
+    return this.registry.resolver(name).then(function(resolver) {
+        return resolver.setAddr(address).send();
+    }).catch(function(error) {
+        throw error;
+    });
+};
+
+/**
+ * Returns the public key
+ *
+ * @param {string} name
+ * @returns {Promise<T>}
+ */
+ENS.prototype.getPubkey = function(name) {
+  return this.registry.resolver(name).then(function(resolver) {
+      return resolver.pubkey();
+  }).catch(function(error) {
+      throw error;
+  });
+};
+
+/**
+ * Set the new public key
+ *
+ * @param {string} name
+ * @param {string} x
+ * @param {string} y
+ * @returns {Promise<Transaction>}
+ */
+ENS.prototype.setPubkey = function(name, x, y) {
+  return this.registry.resolver(name).then(function(resolver) {
+      return resolver.setPubkey(x, y).send();
+  }).catch(function(error) {
+      throw error;
+  });
+};
+
+/**
+ * Returns the content
+ *
+ * @param {string} name
+ * @returns {Promise<T>}
+ */
+ENS.prototype.getContent = function(name) {
+    return this.registry.resolver(name).then(function(resolver) {
+        return resolver.content();
+    }).catch(function(error) {
+        throw error;
+    })
+};
+
+/**
+ * Sets the new content
+ *
+ * @param {string} name
+ * @param {string} hash
+ * @returns {Promise<Transaction>}
+ */
+ENS.prototype.setContent = function(name, hash) {
+  return this.registry.resolver(name).then(function(resolver) {
+      return resolver.setContent(hash);
+  }).catch(function(error) {
+      throw error;
+  });
+};
 
 /**
  * Checks if the current used network is synced and looks for ENS support there.

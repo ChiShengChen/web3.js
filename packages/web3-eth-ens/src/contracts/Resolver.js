@@ -11,12 +11,8 @@ const _ = require('underscore');
  */
 function Resolver(address, node) {
     const self = this;
+    self.node = node;
     self.resolver = new Contract(RESOLVER_ABI, address);
-    _.each(self.resolver.methods, function (method, name) {
-        if (name !== 'supportsInterface') {
-            self.resolver.methods[name] = _.partial(method, node);
-        }
-    });
 }
 
 /**
@@ -26,5 +22,60 @@ function Resolver(address, node) {
  * @returns {Promise<any>}
  */
 Resolver.prototype.addr = function () {
-    return this.resolver.methods.addr().call();
+    return this.resolver.methods.addr(this.node).call();
 };
+
+/**
+ * Sets a new address
+ *
+ * @method setAddr
+ * @param {string} address
+ * @returns {Promise<Transaction>}
+ */
+Resolver.prototype.setAddr = function(address) {
+    return this.resolver.methods.setAddr(this.node, address).send();
+};
+
+/**
+ * Returns the public key
+ *
+ * @returns {Promise<any>}
+ */
+Resolver.prototype.pubkey = function() {
+    return this.resolver.method.pubkey(this.node).call();
+};
+
+/**
+ * Sets a new public key
+ *
+ * @method setPubkey
+ * @param x
+ * @param y
+ * @returns {Promise<Transaction>}
+ */
+Resolver.prototype.setPubkey = function(x, y) {
+    return this.resolver.methods.setPubkey(this.node, y, y).send();
+};
+
+/**
+ * Returns the content of this resolver
+ *
+ * @method getContent
+ * @returns {Promise<any>}
+ */
+Resolver.prototype.content = function() {
+    return this.resolver.methods.content(this.node).call();
+};
+
+/**
+ * Set the content of this resolver
+ *
+ * @param {string} hash
+ * @returns {Promise<Transaction>}
+ */
+Resolver.prototype.setContent = function(hash) {
+    return this.resolver.method.setContent(this.node, hash).send();
+};
+
+
+
