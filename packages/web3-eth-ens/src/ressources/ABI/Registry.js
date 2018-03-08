@@ -1,6 +1,6 @@
 "use strict";
 
-export const REGISTRY = [
+export var REGISTRY = [
     {
         "constant": true,
         "inputs": [

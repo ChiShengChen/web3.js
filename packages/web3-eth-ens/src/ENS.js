@@ -20,15 +20,15 @@
 
 "use strict";
 
-const config = require('./config');
-const Registry = require('./contracts/Registry');
+var config = require('./config');
+var Registry = require('./contracts/Registry');
 
 /**
- * Constructs a new instance of ENS
+ * varructs a new instance of ENS
  *
  * @method ENS
  * @param {Object} eth
- * @constructor
+ * @varructor
  */
 function ENS(eth) {
     this.eth = eth;
@@ -137,15 +137,15 @@ ENS.prototype.setContent = function(name, hash) {
  * @returns {Promise<Block>}
  */
 ENS.prototype.checkNetwork = function () {
-    const self = this;
+    var self = this;
     return self.eth.getBlock('latest').then(function (block) {
-        const headAge = new Date() / 1000 - block.timestamp;
+        var headAge = new Date() / 1000 - block.timestamp;
         if (headAge > 3600) {
             throw new Error("Network not synced; last block was " + headAge + " seconds ago");
         }
         return self.eth.net.getNetworkType();
     }).then(function (networkType) {
-        const addr = config.addresses[networkType];
+        var addr = config.addresses[networkType];
         if (typeof addr === 'undefined') {
             throw new Error("ENS is not supported on network " + networkType);
         }

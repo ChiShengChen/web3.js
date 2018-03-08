@@ -20,17 +20,17 @@
 
 "use strict";
 
-const Contract = require('web3-eth-contract');
-const namehash = require('eth-ens-namehash');
-const REGISTRY_ABI = require('../ressources/ABI/Registry');
-const Resolver = require('./Resolver');
+var Contract = require('web3-eth-contract');
+var namehash = require('eth-ens-namehash');
+var REGISTRY_ABI = require('../ressources/ABI/Registry');
+var Resolver = require('./Resolver');
 
 
 /**
  * A wrapper around the ENS registry contract.
  *
  * @method ENSRegistry
- * @constructor
+ * @varructor
  * @param {Object} ens
  */
 function Registry(ens) {
@@ -63,7 +63,7 @@ Registry.prototype.owner = function(name) {
  * @return {Promise<Resolver>}
  */
 Registry.prototype.resolver = function(name) {
-    const node = namehash.hash(name);
+    var node = namehash.hash(name);
     return this.registry.then(function (contract) {
         return contract.methods.resolver(node).call();
     }).then(function (address) {

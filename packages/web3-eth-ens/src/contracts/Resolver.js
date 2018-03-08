@@ -20,19 +20,19 @@
 
 "use strict";
 
-const RESOLVER_ABI = require('../ressources/ABI/Resolver');
-const Contract = require('web3-eth-contract');
-const _ = require('underscore');
+var RESOLVER_ABI = require('../ressources/ABI/Resolver');
+var Contract = require('web3-eth-contract');
+var _ = require('underscore');
 
 /**
  * Creates an instance of Resolver
  *
  * @param {string} address
  * @param {string} node
- * @constructor
+ * @varructor
  */
 function Resolver(address, node) {
-    const self = this;
+    var self = this;
     self.node = node;
     self.resolver = new Contract(RESOLVER_ABI, address);
 }
