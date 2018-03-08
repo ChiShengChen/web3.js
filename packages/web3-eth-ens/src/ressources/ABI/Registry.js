@@ -1,6 +1,6 @@
 "use strict";
 
-export var REGISTRY = [
+var REGISTRY = [
     {
         "constant": true,
         "inputs": [
@@ -201,3 +201,5 @@ export var REGISTRY = [
         "type": "event"
     }
 ];
+
+module.exports = REGISTRY;

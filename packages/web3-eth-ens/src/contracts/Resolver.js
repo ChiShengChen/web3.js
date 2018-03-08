@@ -22,7 +22,6 @@
 
 var RESOLVER_ABI = require('../ressources/ABI/Resolver');
 var Contract = require('web3-eth-contract');
-var _ = require('underscore');
 
 /**
  * Creates an instance of Resolver

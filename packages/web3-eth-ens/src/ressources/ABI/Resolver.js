@@ -315,3 +315,5 @@ export var RESOLVER = [
         "type": "event"
     }
 ];
+
+module.exports = Resolver;
