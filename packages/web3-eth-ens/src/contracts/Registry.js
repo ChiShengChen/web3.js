@@ -72,3 +72,5 @@ Registry.prototype.resolver = function(name) {
         throw error;
     });
 };
+
+module.exports = Registry;

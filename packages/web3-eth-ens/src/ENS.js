@@ -112,7 +112,7 @@ ENS.prototype.getContent = function(name) {
         return resolver.content();
     }).catch(function(error) {
         throw error;
-    })
+    });
 };
 
 /**
@@ -155,3 +155,5 @@ ENS.prototype.checkNetwork = function () {
         throw err;
     });
 };
+
+module.exports = ENS;

@@ -99,5 +99,4 @@ Resolver.prototype.setContent = function(hash) {
     return this.resolver.method.setContent(this.node, hash).send();
 };
 
-
-
+module.exports = Resolver;
