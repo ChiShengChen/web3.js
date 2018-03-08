@@ -316,4 +316,4 @@ var RESOLVER = [
     }
 ];
 
-module.exports = Resolver;
+module.exports = RESOLVER;
