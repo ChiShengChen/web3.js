@@ -1,6 +1,6 @@
 "use strict";
 
-export var RESOLVER = [
+var RESOLVER = [
     {
         "constant": true,
         "inputs": [
